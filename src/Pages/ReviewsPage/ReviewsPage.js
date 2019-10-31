@@ -19,6 +19,11 @@ export const ReviewsPage = () => {
         setReviews([]);
     }
 
+    function onGoToReviews(e) {
+        e.preventDefault();
+
+    }
+
     return (
         <Fragment>
             <div>
@@ -32,7 +37,9 @@ export const ReviewsPage = () => {
             </div>
             <div className='TextTop'>
                 {reviews.map(
-                review => <ItemInput key={review._id}
+                review => <ItemInput
+                    onClick={(e) => onGoToReviews(e)}
+                    key={review._id}
                     {...{review}}
                 /> )}
             </div>
