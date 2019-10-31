@@ -1,0 +1,71 @@
+.frame {
+  padding-top: 50px;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: pointer;
+  left: 45%;
+
+  svg {
+    height: 55px;
+    width: 150px;
+    fill: none;
+    stroke-width: 5;
+
+    .o1 {
+      stroke: rgba(#FFB341, 0.7);
+      fill: #FFA114;
+      transition: all 1s ease-in-out;
+    }
+
+    .o2 {
+      stroke: #000000;
+      stroke-dasharray: 20;
+      stroke-dashoffset: 20;
+      transition: all 1s ease-in-out;
+    }
+  }
+
+  span {
+    position: absolute;
+    margin: auto 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  &:hover {
+    .o1{
+      fill: rgba(#CC8110, 0.3);
+    }
+
+    .o2 {
+      stroke-dashoffset: -420;
+    }
+  }
+}
+
+.buttonRev {
+  text-decoration: none;
+  text-align: center;
+  padding: 11px 40px;
+  border-radius: 4px;
+  font: 17px Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #232323;
+  background-color: #fafafa;
+  box-shadow: 0 0 2px #7b7b7b, inset 0 0 1px #717178;
+  text-shadow: 0px -1px 0px #a8a8a8;
+  transition: all 0.35s ease;
+  border: 1px solid;
+  margin: 0 0 0 20px;
+}
+.buttonRev:hover {
+  background: #ff984c;
+  box-shadow: 0 2px 0 0 #b1b1b1;
+  color: #000000;
+  transition: all 0.35s ease;
+  cursor: pointer
+}
