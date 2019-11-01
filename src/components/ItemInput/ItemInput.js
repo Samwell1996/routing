@@ -1,14 +1,19 @@
 import React from 'react'
 import {Text} from "../index";
+import { Link} from 'react-router-dom'
+import {routes} from "../../configRoutes";
 
 
-export const ItemInput = ({ review }) => {
+export const ItemInput = ({ text, id,  }) => {
+
+
     return (
-        <div >
+        <Link
+            to={`${routes.DETAILS}${id}/${text}`}>
             <Text>
-                {review.text}
+                {text}
             </Text>
-        </div>
+        </Link>
     )
 };
 

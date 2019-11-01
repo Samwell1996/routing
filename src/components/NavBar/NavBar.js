@@ -1,31 +1,33 @@
 import React from 'react'
-import {Link} from "react-router-dom";
 import {routes} from '../../configRoutes'
 import './NavBar.css'
 import logo from '../../images/logo.svg'
+import {NavLink} from "react-router-dom";
 
-function NavBar() {
+function NavBar({isVisible}) {
 
-    return (
+
+
+    return isVisible && (
         <nav>
             <div className="logo">
                <img src={logo} width='98px' height='40px' alt='Logo'/>
             </div>
             <ul className="menu-area">
                 <li>
-                    <Link to={routes.HOME}>
+                    <NavLink exact to={routes.HOME} activeClassName="is-active">
                         Home
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to={routes.SHOP}>
+                    <NavLink to={routes.SHOP} activeClassName="is-active" >
                         Shop
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to={routes.REVIEWS}>
+                    <NavLink to={routes.REVIEWS} activeClassName="is-active" >
                         Reviews
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
             <hr/>

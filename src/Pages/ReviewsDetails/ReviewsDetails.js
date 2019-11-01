@@ -1,22 +1,31 @@
 import React, {Fragment} from 'react'
 import { ButtonRev } from "../../components";
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import './ReviewsDetails.css'
 
-export const ReviewsDetails = () => {
+export const ReviewsDetails = ({setVisible}) => {
 
     const history = useHistory();
+    let params = useParams();
 
     function goToReviewsPage(event) {
         event.preventDefault();
         history.push('/reviews');
+        setVisible(true);
 
     }
 
     return (
         <Fragment>
-            <ButtonRev onClick={goToReviewsPage}>
-                Back
-            </ButtonRev>
+            <div className='ReviewsDetails'>
+                {params.text}
+            </div>
+            <div className='ReviewsButton'>
+                <ButtonRev onClick={goToReviewsPage}>
+                    Back
+                </ButtonRev>
+            </div>
+
         </Fragment>
     )
 };

@@ -1,11 +1,21 @@
-import React, {Fragment, useState} from 'react'
+import React, {Fragment, useState, useEffect} from 'react'
 import {Input, ButtonRev, ItemInput} from '../../components'
 import './ReviewsPage.css'
 import uuid from "uuid";
 
-export const ReviewsPage = () => {
 
+export const ReviewsPage = ({setVisible}) => {
+
+    // const localStorage = localStorage.getItem(`li`);
+    // const parsedReviews = JSON.parse(localStorage);
     const [reviews, setReviews] = useState([]);
+
+    //
+    // useEffect(()=>{
+    //     const strReviews = JSON.stringify(reviews);
+    //     localStorage.setItem('reviews', strReviews)
+    // },[reviews]);
+
 
     const onAdd = text => setReviews([
         ...reviews,
@@ -18,10 +28,9 @@ export const ReviewsPage = () => {
         event.preventDefault();
         setReviews([]);
     }
-
-    function onGoToReviews(e) {
-        e.preventDefault();
-
+    function onClick(event) {
+        event.preventDefault();
+        setVisible(false);
     }
 
     return (
@@ -35,12 +44,12 @@ export const ReviewsPage = () => {
                     Clear all
                 </ButtonRev>
             </div>
-            <div className='TextTop'>
+            <div className='TextTop' onClick={onClick}>
                 {reviews.map(
                 review => <ItemInput
-                    onClick={(e) => onGoToReviews(e)}
                     key={review._id}
-                    {...{review}}
+                    id={review._id}
+                    text={review.text}
                 /> )}
             </div>
         </Fragment>
