@@ -6,18 +6,22 @@ import uuid from "uuid";
 
 export const ReviewsPage = ({setVisible}) => {
 
-    // const localStorage = localStorage.getItem(`li`);
-    // const parsedReviews = JSON.parse(localStorage);
-    const [reviews, setReviews] = useState([]);
+    const [reviews, setReviews] = useState( []);
 
-    //
-    // useEffect(()=>{
-    //     const strReviews = JSON.stringify(reviews);
-    //     localStorage.setItem('reviews', strReviews)
-    // },[reviews]);
+    function onChangeReviews (newReviews) {
+        const strReviews = JSON.stringify(newReviews);
+        localStorage.setItem('reviews', strReviews);
+        setReviews(newReviews);
+    }
+
+    useEffect(()=> {
+        const rev =  localStorage.getItem(`reviews`);
+        const parsedReviews = JSON.parse(rev);
+        setReviews(parsedReviews);
+    },[]);
 
 
-    const onAdd = text => setReviews([
+    const onAdd = text => onChangeReviews([
         ...reviews,
         {
             _id: uuid(),
