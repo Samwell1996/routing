@@ -27,7 +27,7 @@ function App() {
                     component={ShopPage}
                 />
                 <Route
-                    path={`${routes.DETAILS}:reviewId/:text`}
+                    path={`${routes.DETAILS}:reviewId`}
                     render={() => <ReviewsDetails setVisible={setVisible}/>}
                 />
             </Switch>

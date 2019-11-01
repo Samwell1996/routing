@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react'
+import React, {Fragment, useState, useMemo} from 'react'
 import {Input, ButtonRev, ItemInput} from '../../components'
 import './ReviewsPage.css'
 import uuid from "uuid";
@@ -6,19 +6,19 @@ import uuid from "uuid";
 
 export const ReviewsPage = ({setVisible}) => {
 
-    const [reviews, setReviews] = useState( []);
+    const initReviews = useMemo(()=> {
+        const rev =  localStorage.getItem(`reviews`);
+        return JSON.parse(rev);
+
+    },[]);
+
+    const [reviews, setReviews] = useState( initReviews || []);
 
     function onChangeReviews (newReviews) {
         const strReviews = JSON.stringify(newReviews);
         localStorage.setItem('reviews', strReviews);
         setReviews(newReviews);
     }
-
-    useEffect(()=> {
-        const rev =  localStorage.getItem(`reviews`);
-        const parsedReviews = JSON.parse(rev);
-        setReviews(parsedReviews);
-    },[]);
 
 
     const onAdd = text => onChangeReviews([

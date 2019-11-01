@@ -4,12 +4,12 @@ import { Link} from 'react-router-dom'
 import {routes} from "../../configRoutes";
 
 
-export const ItemInput = ({ text, id,  }) => {
+export const ItemInput = ({ id, text }) => {
 
 
     return (
         <Link
-            to={`${routes.DETAILS}${id}/${text}`}>
+            to={`${routes.DETAILS}${id}`}>
             <Text>
                 {text}
             </Text>
